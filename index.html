@@ -9,18 +9,31 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="main_content"> 
+    <div id="header" class="border">
+        <p>HEADER</p>
+    </div>
+    <div id="main_content" class="border"> 
         <h1> To see the weather forecast in your area</h1>
-        <h2> Select your location</h2>
+        <h2> Input your location</h2>
         <form>
             <ul>
-                <li> City </li>
-                <li>  State  </li>
+                <li>
+                    <h3>ENTER YOUR CITY</h3> 
+                    <label for="city">CITY:</label>
+                    <input type="text" id="city" name="user_city" required pattern="[A-Za-z]+" />
+                </li>
+                <li> 
+                    <h3>ENTER YOUR STATE</h3>
+                    <label for="state">STATE:</label>
+                    <input type="text" id="state" name="user_state" required pattern="[A-Za-z]+" />
+                </li>
             </ul>
             <button> Submit</button>
 
         </form>
-
+    </div>
+    <div id="footer" class="border">
+        <p>FOOTER</p>
     </div>
 </body>
 </html>
