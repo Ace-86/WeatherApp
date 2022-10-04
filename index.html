@@ -12,26 +12,37 @@
     <div id="header" class="border">
         <p>HEADER</p>
     </div>
+    
     <div id="main_content" class="border"> 
-        <h1> To see the weather forecast in your area</h1>
-        <h2> Input your location</h2>
-        <form>
-            <ul>
-                <li>
-                    <h3>ENTER YOUR CITY</h3> 
-                    <label for="city">CITY:</label>
-                    <input type="text" id="city" name="user_city" required pattern="[A-Za-z]+" />
-                </li>
-                <li> 
-                    <h3>ENTER YOUR STATE</h3>
-                    <label for="state">STATE:</label>
-                    <input type="text" id="state" name="user_state" required pattern="[A-Za-z]+" />
-                </li>
-            </ul>
-            <button> Submit</button>
+        <div id="user_input" class="border2">
+            <h1> To see the weather forecast in your area</h1>
+            <h2> Input your location</h2>
+            <form>
+                <ul>
+                    <li>
+                        <h3>ENTER YOUR CITY</h3> 
+                        <label for="city">CITY:</label>
+                        <input type="text" id="city" name="user_city" />
+                    </li>
+                   
+                </ul>
+            </form>
+            <button id="user_submit"> Submit</button>
+        </div>
 
-        </form>
+        <div id="results_display">
+            <h1> Today's forecast</h1>
+            <div id="weather_display">
+                <h1 id="location"> </h1>
+                <p id="curr_temp"> </p>
+                <p id="desc_weather"> </p>
+                <p id="wind_speed"> </p>
+
+            </div>
+        </div>
+
     </div>
+
     <div id="footer" class="border">
         <p>FOOTER</p>
     </div>
