@@ -1,4 +1,5 @@
 body {
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: .2fr 2fr .2fr;
 }
@@ -9,8 +10,20 @@ body {
 }
 
 #main_content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-column: 1 / 4;
     grid-row: 2 / 3;
+}
+
+#user_input {
+    grid-column: 1 / 2;
+    
+}
+
+#results_display {
+    grid-column: 2 / 4;
+
 }
 
 #footer {
