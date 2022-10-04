@@ -9,35 +9,32 @@ const windSpeed = document.querySelector('#wind_speed');
 
 
 
-const makeRequest = () => {
-    fetch('https://api.openweathermap.org/data/2.5/weather?q='+userCity.value +'&appid=48f9e697bfab037187eccf9b6153b9e9&units=imperial', {
+async function makeRequest() {
+    try {
+    const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q='+userCity.value +'&appid=48f9e697bfab037187eccf9b6153b9e9&units=imperial', {
         mode: 'cors'
     })
-    .then(function(response) {
-        return response.json()
-    })
-    .then(function(response) {
-        console.log(response)
-        console.log(response.main.temp)
-        console.log(response.name)
-        console.log(response.sys.country)
-        console.log(response.weather[0].description)
-        console.log(response.wind)
+    const weatherData = await response.json();
+        console.log(weatherData)
+        console.log(weatherData.main.temp)
+        console.log(weatherData.name)
+        console.log(weatherData.sys.country)
+        console.log(weatherData.weather[0].description)
+        console.log(weatherData.wind)
 
-        const wind = JSON.stringify(response.wind)
-        const country = JSON.stringify(response.sys.country)
-        const location = JSON.stringify(response.name)
-        const description = JSON.stringify(response.weather[0].description)
-        const weather = JSON.stringify(response.main.temp);
+        const wind = JSON.stringify(weatherData.wind)
+        const country = JSON.stringify(weatherData.sys.country)
+        const location = JSON.stringify(weatherData.name)
+        const description = JSON.stringify(weatherData.weather[0].description)
+        const weather = JSON.stringify(weatherData.main.temp);
         
         cityLoc.innerHTML = location + ',' + country;
         currentTempature.innerHTML = "The current temperature is " + weather + ' F';
         weatherDescription.innerHTML = "Today's Forecast: " + description;
         windSpeed.innerHTML = "Wind Speed: " + wind
-    })
-    .catch(function(err) {
-        console.log('error')
-}); 
+    } catch (err) {
+            console.log('error')
+    }
 }
 
 submission.addEventListener('click', makeRequest)
