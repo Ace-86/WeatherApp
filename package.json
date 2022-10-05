@@ -2,7 +2,7 @@
   "name": "weatherapp",
   "version": "1.0.0",
   "description": "Weather forecaster",
-  "private": true, 
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +20,11 @@
   "devDependencies": {
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.2",
+    "jquery": "^3.6.1",
+    "popper.js": "^1.16.1"
   }
 }
