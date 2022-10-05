@@ -41,3 +41,19 @@ async function makeRequest() {
 }
 
 submission.addEventListener('click', makeRequest)
+
+
+// -------------geocode------------
+
+async function getGeocode() {
+    try {
+    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q=Franklin, 55&limit=1&appid=48f9e697bfab037187eccf9b6153b9e9', {
+        mode: 'cors'
+    })
+    const getGeo = await response.json();
+    console.log(getGeo);
+     } catch (err) {
+        console.log('error')
+    }
+    }
+getGeocode();
