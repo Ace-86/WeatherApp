@@ -1,4 +1,5 @@
 import 'bootstrap';
+import './scss/app.scss';
 
 // https://api.openweathermap.org/data/2.5/weather?q=London&appid=48f9e697bfab037187eccf9b6153b9e9
 const weatherDisplay = document.querySelector('#weather_display');
