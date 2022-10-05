@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="main.js" defer></script>
 </head>
-<body>
-    <div id="header" class="border">
+<body class="d-flex flex-column min-vh-100 bg-info">
+    <div id="header" class="container-fluid bg-dark text-white">
         <h1>Weather App</h1>
     </div>
     
-    <div id="main_content" class="border"> 
-        <div id="user_input" class="border2">
+    <div id="main_content" class="container-fluid"> 
+        <div class=" row">
+        <div id="user_input" class="col-md-6">
             <h2> To see the weather forecast in your area</h2>
             <h3> Input your location</h3>
             <form>
@@ -27,24 +28,30 @@
                    
                 </ul>
             </form>
-            <button id="user_submit"> Submit</button>
+            <button id="user_submit" class="btn btn-dark"> Submit</button>
         </div>
 
-        <div id="results_display">
-            <h1> Today's forecast</h1>
+        <div id="results_display" class="col-md-6">
+            <div class="card text-white bg-dark" style="width: 300px;">
+            <div class="card-body text-center"> 
+                <div class="card-title"> Today's forecast </div>
             <div id="weather_display">
-                <h1 id="location"> </h1>
-                <p id="curr_temp"> </p>
-                <p id="desc_weather"> </p>
-                <p id="wind_speed"> </p>
-
+                <p id="location" class="card-text"> </p>
+                <p id="curr_temp" class="card-text"> </p>
+                <p id="desc_weather" class="card-text"> </p>
+                <p id="wind_speed" class="card-text"> </p>
+            </div>
+            </div>
             </div>
         </div>
-
+        
+    </div>
     </div>
 
-    <div id="footer" class="border">
-        <p>FOOTER</p>
-    </div>
+    <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container">
+            <span class="text-light">Footer</span>
+        </div>
+    </footer>
 </body>
 </html>
