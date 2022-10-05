@@ -44,14 +44,18 @@ submission.addEventListener('click', makeRequest)
 
 
 // -------------geocode------------
-
+//on click, find location of city
+//city will bring up a list in array, having a different state
+//match populated state with the users state input
+//once matched, take the longitude and latitude numbers, save as a variable, and input them into weather makeRequest function
 async function getGeocode() {
     try {
-    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q=Franklin, 55&limit=1&appid=48f9e697bfab037187eccf9b6153b9e9', {
+    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q={Joliet},{3166-2}&limit=9&appid=48f9e697bfab037187eccf9b6153b9e9', {
         mode: 'cors'
     })
     const getGeo = await response.json();
     console.log(getGeo);
+    
      } catch (err) {
         console.log('error')
     }
