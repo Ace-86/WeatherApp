@@ -2,7 +2,7 @@ import 'bootstrap';
 import './scss/app.scss';
 
 // https://api.openweathermap.org/data/2.5/weather?q=London&appid=48f9e697bfab037187eccf9b6153b9e9
-const weatherDisplay = document.querySelector('#weather_display');
+const userState = document.querySelector('#state');
 const userCity = document.querySelector('#city');
 const submission = document.querySelector('#user_submit');
 const cityLoc = document.querySelector('#location');
@@ -10,7 +10,8 @@ const currentTempature = document.querySelector('#curr_temp');
 const weatherDescription = document.querySelector('#desc_weather');
 const windSpeed = document.querySelector('#wind_speed');
 
-
+let user_city = ''
+let user_state = ''
 
 async function makeRequest() {
     try {
@@ -40,7 +41,6 @@ async function makeRequest() {
     }
 }
 
-submission.addEventListener('click', makeRequest)
 
 
 // -------------geocode------------
@@ -50,14 +50,23 @@ submission.addEventListener('click', makeRequest)
 //once matched, take the longitude and latitude numbers, save as a variable, and input them into weather makeRequest function
 async function getGeocode() {
     try {
-    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q={Joliet},{3166-2}&limit=9&appid=48f9e697bfab037187eccf9b6153b9e9', {
+    const user_state = userState.value.charAt(0).toUpperCase() + userState.value.slice(1).toLowerCase();
+    const user_city = userCity.value.charAt(0).toUpperCase() + userCity.value.slice(1).toLowerCase();
+    console.log(user_state)
+    console.log(user_city)
+    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q={' +`${user_city}` +'},{3166-2}&limit=9&appid=48f9e697bfab037187eccf9b6153b9e9', {
         mode: 'cors'
     })
     const getGeo = await response.json();
     console.log(getGeo);
+    const arrGeo = getGeo.filter(arrGeo => arrGeo.state.indexOf(`${user_state}`) !== -1);
+    console.log(arrGeo);
+    console.log(user_state)
     
      } catch (err) {
         console.log('error')
     }
-    }
-getGeocode();
+}
+
+
+submission.addEventListener('click', getGeocode)
