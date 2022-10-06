@@ -9,16 +9,43 @@ const cityLoc = document.querySelector('#location');
 const currentTempature = document.querySelector('#curr_temp');
 const weatherDescription = document.querySelector('#desc_weather');
 const windSpeed = document.querySelector('#wind_speed');
-
-let user_city = ''
-let user_state = ''
-
-async function makeRequest() {
+var longitude;
+var latitude;
+// -------------geocode------------
+//on click, find location of city
+//city will bring up a list in array, having a different state
+//match populated state with the users state input
+//once matched, take the longitude and latitude numbers, save as a variable, and input them into weather makeRequest function
+    async function getGeocode() {
     try {
-    const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q='+userCity.value +'&appid=48f9e697bfab037187eccf9b6153b9e9&units=imperial', {
+    const user_state = userState.value.charAt(0).toUpperCase() + userState.value.slice(1).toLowerCase();
+    const user_city = userCity.value.charAt(0).toUpperCase() + userCity.value.slice(1).toLowerCase();
+    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q={' +`${user_city}` +'},{3166-2}&limit=9&appid=48f9e697bfab037187eccf9b6153b9e9', {
         mode: 'cors'
     })
-    const weatherData = await response.json();
+    const getGeo = await response.json();
+    console.log(getGeo);
+    const arrGeo = getGeo.filter(arrGeo => arrGeo.state.indexOf(`${user_state}`) !== -1);
+    console.log(arrGeo);
+
+    //get lon and lat from arrGeo
+    longitude = arrGeo[0].lon;
+    latitude = arrGeo[0].lat;
+    console.log(longitude);
+    console.log(latitude);
+    
+    return {lon : longitude, lat: latitude}
+     } catch (err) {
+        console.log('geo code error')
+    } 
+}
+
+async function makeRequest() {
+    try { 
+        const response2 = await fetch('api.openweathermap.org/data/2.5/forecast?lat={'+`${latitude.value}`+'}&lon={' + `${longitude}` + '}&appid=48f9e697bfab037187eccf9b6153b9e9', {
+        mode: 'cors'
+    })
+    const weatherData = await response2.json();
         console.log(weatherData)
         console.log(weatherData.main.temp)
         console.log(weatherData.name)
@@ -43,30 +70,7 @@ async function makeRequest() {
 
 
 
-// -------------geocode------------
-//on click, find location of city
-//city will bring up a list in array, having a different state
-//match populated state with the users state input
-//once matched, take the longitude and latitude numbers, save as a variable, and input them into weather makeRequest function
-async function getGeocode() {
-    try {
-    const user_state = userState.value.charAt(0).toUpperCase() + userState.value.slice(1).toLowerCase();
-    const user_city = userCity.value.charAt(0).toUpperCase() + userCity.value.slice(1).toLowerCase();
-    console.log(user_state)
-    console.log(user_city)
-    const response = await fetch('http://api.openweathermap.org/geo/1.0/direct?q={' +`${user_city}` +'},{3166-2}&limit=9&appid=48f9e697bfab037187eccf9b6153b9e9', {
-        mode: 'cors'
+submission.addEventListener('click', () => {
+    var data = getGeocode();
+    console.log('this is' + data)
     })
-    const getGeo = await response.json();
-    console.log(getGeo);
-    const arrGeo = getGeo.filter(arrGeo => arrGeo.state.indexOf(`${user_state}`) !== -1);
-    console.log(arrGeo);
-    console.log(user_state)
-    
-     } catch (err) {
-        console.log('error')
-    }
-}
-
-
-submission.addEventListener('click', getGeocode)
