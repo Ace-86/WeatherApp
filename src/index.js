@@ -5,7 +5,7 @@ import './scss/app.scss';
 const userState = document.querySelector('#state');
 const userCity = document.querySelector('#city');
 const submission = document.querySelector('#user_submit');
-const cityLoc = document.querySelector('#location');
+const cityLoc = document.querySelectorAll('#location');
 const currentTempature = document.querySelector('#curr_temp');
 const weatherDescription = document.querySelector('#desc_weather');
 const windSpeed = document.querySelector('#wind_speed');
@@ -26,31 +26,31 @@ async function getGeoCode() {
 
     //get lon and lat from arrGeo
     var long = arrGeo[0].lon;
-    var latitude = arrGeo[0].lat;
+    var lat = arrGeo[0].lat;
     
-    console.log(latitude, long);
+    console.log(lat, long);
 
-        const responseTwo = await fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + `${latitude}` + '&lon=' + `${long}` + '&appid=48f9e697bfab037187eccf9b6153b9e9&units=imperial', {
+        const responseTwo = await fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + `${lat}` + '&lon=' + `${long}` + '&appid=48f9e697bfab037187eccf9b6153b9e9&units=imperial', {
             mode: 'cors'
         })
         const weatherData = await responseTwo.json();
         console.log(weatherData);
-        // console.log(weatherData.main.temp)
+        console.log(weatherData.list[0].main.temp)
 //         // console.log(weatherData.name)
 //         // console.log(weatherData.sys.country)
 //         // console.log(weatherData.weather[0].description)
 //         // console.log(weatherData.wind)
         
-//         // const wind = JSON.stringify(weatherData.wind)
-//         // const country = JSON.stringify(weatherData.sys.country)
-//         // const location = JSON.stringify(weatherData.name)
-//         // const description = JSON.stringify(weatherData.weather[0].description)
-//         // const weather = JSON.stringify(weatherData.main.temp);
+        const wind = JSON.stringify(weatherData.list[0].wind)
+        const country = JSON.stringify(weatherData.list[0].sys.country)
+        const location = JSON.stringify(weatherData.list[0].name)
+        const description = JSON.stringify(weatherData.list[0].weather[0].description)
+        const weather = JSON.stringify(weatherData.list[0].main.temp);
         
-//         // cityLoc.innerHTML = location + ',' + country;
-//         // currentTempature.innerHTML = "The current temperature is " + weather + ' F';
-//         // weatherDescription.innerHTML = "Today's Forecast: " + description;
-//         // windSpeed.innerHTML = "Wind Speed: " + wind
+        cityLoc.innerHTML = location + ',' + country;
+        currentTempature.innerHTML = "The current temperature is " + weather + ' F';
+        weatherDescription.innerHTML = "Today's Forecast: " + description;
+        windSpeed.innerHTML = "Wind Speed: " + wind
     } catch (err) {
         console.log('geo code error')
     } 
