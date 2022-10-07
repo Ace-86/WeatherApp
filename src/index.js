@@ -9,7 +9,7 @@ const cityLoc = document.querySelector('#location');
 const currentTempature = document.querySelector('#curr_temp');
 const weatherDescription = document.querySelector('#desc_weather');
 const windSpeed = document.querySelector('#wind_speed');
-var long = 0;
+
 
 // -------------geocode------------
 async function getGeoCode() {
@@ -30,25 +30,12 @@ async function getGeoCode() {
     
     console.log(latitude, long);
 
-        const responseTwo = await fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + `${latitude}` + '&lon=' + `${long}` + '&appid=48f9e697bfab037187eccf9b6153b9e9', {
+        const responseTwo = await fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + `${latitude}` + '&lon=' + `${long}` + '&appid=48f9e697bfab037187eccf9b6153b9e9&units=imperial', {
             mode: 'cors'
         })
         const weatherData = await responseTwo.json();
         console.log(weatherData);
-    } catch (err) {
-        console.log('geo code error')
-    } 
-
-}
-
-// async function makeRequest() {
-//     try { 
-//         const responseTwo = await fetch('http://api.openweathermap.org/data/2.5/forecast?lat=41.8755616&lon=-87.6244212&appid=48f9e697bfab037187eccf9b6153b9e9', {
-//             mode: 'cors'
-//         })
-//         const weatherData = await responseTwo.json();
-//         console.log(weatherData)
-//         // console.log(weatherData.main.temp)
+        // console.log(weatherData.main.temp)
 //         // console.log(weatherData.name)
 //         // console.log(weatherData.sys.country)
 //         // console.log(weatherData.weather[0].description)
@@ -64,12 +51,10 @@ async function getGeoCode() {
 //         // currentTempature.innerHTML = "The current temperature is " + weather + ' F';
 //         // weatherDescription.innerHTML = "Today's Forecast: " + description;
 //         // windSpeed.innerHTML = "Wind Speed: " + wind
-//     } catch (err) {
-//         console.log('error')
-//     }
-// }
+    } catch (err) {
+        console.log('geo code error')
+    } 
 
-
-
+}
 
 submission.addEventListener('click',getGeoCode);
