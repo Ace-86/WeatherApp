@@ -20,6 +20,10 @@ const currentTempature2 = document.querySelector('#curr_temp2');
 const weatherDescription2 = document.querySelector('#desc_weather2');
 const windSpeed2 = document.querySelector('#wind_speed2');
 
+const cityLoc3 = document.querySelector('#location3');
+const currentTempature3 = document.querySelector('#curr_temp3');
+const weatherDescription3 = document.querySelector('#desc_weather3');
+const windSpeed3 = document.querySelector('#wind_speed3');
 
 // -------------geocode------------
 async function getGeoCode() {
@@ -46,10 +50,6 @@ async function getGeoCode() {
         const weatherData = await responseTwo.json();
         console.log(weatherData);
         console.log(weatherData.list[0].main.temp)
-//         // console.log(weatherData.name)
-//         // console.log(weatherData.sys.country)
-//         // console.log(weatherData.weather[0].description)
-//         // console.log(weatherData.wind)
         
         const wind = JSON.stringify(weatherData.list[0].wind)
         const country = JSON.stringify(weatherData.list[0].sys.country)
@@ -69,6 +69,12 @@ async function getGeoCode() {
         const description2 = JSON.stringify(weatherData.list[16].weather[0].description)
         const weather2 = JSON.stringify(weatherData.list[16].main.temp);
 
+        const wind3 = JSON.stringify(weatherData.list[24].wind)
+        const country3 = JSON.stringify(weatherData.list[24].sys.country)
+        const location3 = JSON.stringify(weatherData.list[24].name)
+        const description3 = JSON.stringify(weatherData.list[24].weather[0].description)
+        const weather3 = JSON.stringify(weatherData.list[24].main.temp);
+
         cityLoc.innerHTML = location + ',' + country;
         currentTempature.innerHTML = "The current temperature is " + weather + ' F';
         weatherDescription.innerHTML = "Today's Forecast: " + description;
@@ -83,6 +89,11 @@ async function getGeoCode() {
         currentTempature2.innerHTML = "The current temperature is " + weather2 + ' F';
         weatherDescription2.innerHTML = "Today's Forecast: " + description2;
         windSpeed2.innerHTML = "Wind Speed: " + wind2;
+
+        cityLoc3.innerHTML = location3 + ',' + country3
+        currentTempature3.innerHTML = "The current temperature is " + weather3 + ' F';
+        weatherDescription3.innerHTML = "Today's Forecast: " + description3;
+        windSpeed3.innerHTML = "Wind Speed: " + wind3;
 
     } catch (err) {
         console.log('geo code error')
