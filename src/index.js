@@ -56,47 +56,52 @@ async function getGeoCode() {
         const location = JSON.stringify(weatherData.city.name)
         const description = JSON.stringify(weatherData.list[0].weather[0].description)
         const weather = JSON.stringify(weatherData.list[0].main.temp);
-        const iconcode =  JSON.stringify(weatherData.list[0].weather.icon);
-        console.log("here" + iconcode);
-        // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+        const iconcode =  weatherData.list[0].weather[0].icon;
 
         const wind1 = JSON.stringify(weatherData.list[8].wind)
         const country1 = JSON.stringify(weatherData.list[8].sys.country)
-        const location1 = JSON.stringify(weatherData.list[8].name)
+        const location1 = JSON.stringify(weatherData.city.name)
         const description1 = JSON.stringify(weatherData.list[8].weather[0].description)
         const weather1 = JSON.stringify(weatherData.list[8].main.temp);
+        const iconcode2 =  weatherData.list[8].weather[0].icon;
         
         const wind2 = JSON.stringify(weatherData.list[16].wind)
         const country2 = JSON.stringify(weatherData.list[16].sys.country)
-        const location2 = JSON.stringify(weatherData.list[16].name)
+        const location2 = JSON.stringify(weatherData.city.name)
         const description2 = JSON.stringify(weatherData.list[16].weather[0].description)
         const weather2 = JSON.stringify(weatherData.list[16].main.temp);
+        const iconcode3 =  weatherData.list[16].weather[0].icon;
 
         const wind3 = JSON.stringify(weatherData.list[24].wind)
         const country3 = JSON.stringify(weatherData.list[24].sys.country)
-        const location3 = JSON.stringify(weatherData.list[24].name)
+        const location3 = JSON.stringify(weatherData.city.name)
         const description3 = JSON.stringify(weatherData.list[24].weather[0].description)
         const weather3 = JSON.stringify(weatherData.list[24].main.temp);
+        const iconcode4 =  weatherData.list[24].weather[0].icon;
 
         cityLoc.innerHTML = location + ',' + country;
         currentTempature.innerHTML = "The current temperature is " + weather + ' F';
         weatherDescription.innerHTML = "Today's Forecast: " + description;
         windSpeed.innerHTML = "Wind Speed: " + wind;
+        document.getElementById("weather_icon").src = "../src/images/" + iconcode + ".png";
 
         cityLoc1.innerHTML = location1 + ',' + country1;
         currentTempature1.innerHTML = "The current temperature is " + weather1 + ' F';
         weatherDescription1.innerHTML = "Today's Forecast: " + description1;
         windSpeed1.innerHTML = "Wind Speed: " + wind1;
+        document.getElementById("weather_icon2").src = "../src/images/" + iconcode2 + ".png";
 
         cityLoc2.innerHTML = location2 + ',' + country2;
         currentTempature2.innerHTML = "The current temperature is " + weather2 + ' F';
         weatherDescription2.innerHTML = "Today's Forecast: " + description2;
         windSpeed2.innerHTML = "Wind Speed: " + wind2;
+        document.getElementById("weather_icon3").src = "../src/images/" + iconcode3 + ".png";
 
         cityLoc3.innerHTML = location3 + ',' + country3
         currentTempature3.innerHTML = "The current temperature is " + weather3 + ' F';
         weatherDescription3.innerHTML = "Today's Forecast: " + description3;
         windSpeed3.innerHTML = "Wind Speed: " + wind3;
+        document.getElementById("weather_icon4").src = "../src/images/" + iconcode4 + ".png";
 
     } catch (err) {
         console.log('geo code error')
