@@ -57,52 +57,44 @@ async function getGeoCode() {
         console.log(user_City);
 
         //current weather display
-        const wind = JSON.stringify(weatherData.list[0].wind)
         const description = JSON.stringify(weatherData.list[0].weather[0].description)
         const weather = JSON.stringify(weatherData.list[0].main.temp);
         const iconcode =  weatherData.list[0].weather[0].icon;
 
         //next day, day 1 forecast
-        const wind1 = JSON.stringify(weatherData.list[8].wind)
         const description1 = JSON.stringify(weatherData.list[8].weather[0].description)
         const weather1 = JSON.stringify(weatherData.list[8].main.temp);
         const iconcode2 =  weatherData.list[8].weather[0].icon;
         
         // day 2 forecast
-        const wind2 = JSON.stringify(weatherData.list[16].wind)
         const description2 = JSON.stringify(weatherData.list[16].weather[0].description)
         const weather2 = JSON.stringify(weatherData.list[16].main.temp);
         const iconcode3 =  weatherData.list[16].weather[0].icon;
 
         // day 3 forecast
-        const wind3 = JSON.stringify(weatherData.list[24].wind)
         const description3 = JSON.stringify(weatherData.list[24].weather[0].description)
         const weather3 = JSON.stringify(weatherData.list[24].main.temp);
         const iconcode4 =  weatherData.list[24].weather[0].icon;
 
         cityLoc.innerHTML = user_City + ', ' + user_State;
-        currentTempature.innerHTML = "The current temperature is " + weather + ' F';
+        currentTempature.innerHTML = "Current Temperature: " + weather + ' F';
         weatherDescription.innerHTML = "Today's Forecast: " + description;
-        windSpeed.innerHTML = "Wind Speed: " + wind;
         document.getElementById("weather_icon").src = "../src/images/" + iconcode + ".png";
 
         cityLoc1.innerHTML = user_City + ', ' + user_State;
-        currentTempature1.innerHTML = "The current temperature is " + weather1 + ' F';
-        weatherDescription1.innerHTML = "Today's Forecast: " + description1;
-        windSpeed1.innerHTML = "Wind Speed: " + wind1;
+        currentTempature1.innerHTML = "Temperature: " + weather1 + ' F';
+        weatherDescription1.innerHTML = "Forecast: " + description1;
         document.getElementById("weather_icon2").src = "../src/images/" + iconcode2 + ".png";
 
         cityLoc2.innerHTML = user_City + ', ' + user_State;
-        currentTempature2.innerHTML = "The current temperature is " + weather2 + ' F';
-        weatherDescription2.innerHTML = "Today's Forecast: " + description2;
-        windSpeed2.innerHTML = "Wind Speed: " + wind2;
+        currentTempature2.innerHTML = "Temperature: " + weather2 + ' F';
+        weatherDescription2.innerHTML = "Forecast: " + description2;
         document.getElementById("weather_icon3").src = "../src/images/" + iconcode3 + ".png";
 
         cityLoc3.innerHTML = user_City + ', ' + user_State;
-        currentTempature3.innerHTML = "The current temperature is " + weather3 + ' F';
-        weatherDescription3.innerHTML = "Today's Forecast: " + description3;
-        windSpeed3.innerHTML = "Wind Speed: " + wind3;
         document.getElementById("weather_icon4").src = "../src/images/" + iconcode4 + ".png";
+        currentTempature3.innerHTML = "Temperature: " + weather3 + ' F';
+        weatherDescription3.innerHTML = "Forecast: " + description3;
 
     } catch (err) {
         console.log('geo code error')
