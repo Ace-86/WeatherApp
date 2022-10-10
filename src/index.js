@@ -51,6 +51,11 @@ async function getGeoCode() {
         console.log(weatherData);
         console.log(weatherData.list[0].main.temp)
         
+        var user_State = arrGeo[0].state;
+        var user_City = arrGeo[0].name;
+        console.log(user_State);
+        console.log(user_City);
+
         const wind = JSON.stringify(weatherData.list[0].wind)
         const country = JSON.stringify(weatherData.list[0].sys.country)
         const location = JSON.stringify(weatherData.city.name)
@@ -79,25 +84,25 @@ async function getGeoCode() {
         const weather3 = JSON.stringify(weatherData.list[24].main.temp);
         const iconcode4 =  weatherData.list[24].weather[0].icon;
 
-        cityLoc.innerHTML = location + ',' + country;
+        cityLoc.innerHTML = user_City + ', ' + user_State;
         currentTempature.innerHTML = "The current temperature is " + weather + ' F';
         weatherDescription.innerHTML = "Today's Forecast: " + description;
         windSpeed.innerHTML = "Wind Speed: " + wind;
         document.getElementById("weather_icon").src = "../src/images/" + iconcode + ".png";
 
-        cityLoc1.innerHTML = location1 + ',' + country1;
+        cityLoc1.innerHTML = user_City + ', ' + user_State;
         currentTempature1.innerHTML = "The current temperature is " + weather1 + ' F';
         weatherDescription1.innerHTML = "Today's Forecast: " + description1;
         windSpeed1.innerHTML = "Wind Speed: " + wind1;
         document.getElementById("weather_icon2").src = "../src/images/" + iconcode2 + ".png";
 
-        cityLoc2.innerHTML = location2 + ',' + country2;
+        cityLoc2.innerHTML = user_City + ', ' + user_State;
         currentTempature2.innerHTML = "The current temperature is " + weather2 + ' F';
         weatherDescription2.innerHTML = "Today's Forecast: " + description2;
         windSpeed2.innerHTML = "Wind Speed: " + wind2;
         document.getElementById("weather_icon3").src = "../src/images/" + iconcode3 + ".png";
 
-        cityLoc3.innerHTML = location3 + ',' + country3
+        cityLoc3.innerHTML = user_City + ', ' + user_State;
         currentTempature3.innerHTML = "The current temperature is " + weather3 + ' F';
         weatherDescription3.innerHTML = "Today's Forecast: " + description3;
         windSpeed3.innerHTML = "Wind Speed: " + wind3;
