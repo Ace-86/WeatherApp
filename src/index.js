@@ -53,12 +53,12 @@ async function getGeoCode() {
         
         const wind = JSON.stringify(weatherData.list[0].wind)
         const country = JSON.stringify(weatherData.list[0].sys.country)
-        const location = JSON.stringify(weatherData.list[0].name)
+        const location = JSON.stringify(weatherData.city.name)
         const description = JSON.stringify(weatherData.list[0].weather[0].description)
         const weather = JSON.stringify(weatherData.list[0].main.temp);
-        var iconcode = list.weather[0].icon;
-        console.log(iconcode)
-        var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+        const iconcode =  JSON.stringify(weatherData.list[0].weather.icon);
+        console.log("here" + iconcode);
+        // var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
 
         const wind1 = JSON.stringify(weatherData.list[8].wind)
         const country1 = JSON.stringify(weatherData.list[8].sys.country)
