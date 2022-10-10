@@ -56,30 +56,26 @@ async function getGeoCode() {
         console.log(user_State);
         console.log(user_City);
 
+        //current weather display
         const wind = JSON.stringify(weatherData.list[0].wind)
-        const country = JSON.stringify(weatherData.list[0].sys.country)
-        const location = JSON.stringify(weatherData.city.name)
         const description = JSON.stringify(weatherData.list[0].weather[0].description)
         const weather = JSON.stringify(weatherData.list[0].main.temp);
         const iconcode =  weatherData.list[0].weather[0].icon;
 
+        //next day, day 1 forecast
         const wind1 = JSON.stringify(weatherData.list[8].wind)
-        const country1 = JSON.stringify(weatherData.list[8].sys.country)
-        const location1 = JSON.stringify(weatherData.city.name)
         const description1 = JSON.stringify(weatherData.list[8].weather[0].description)
         const weather1 = JSON.stringify(weatherData.list[8].main.temp);
         const iconcode2 =  weatherData.list[8].weather[0].icon;
         
+        // day 2 forecast
         const wind2 = JSON.stringify(weatherData.list[16].wind)
-        const country2 = JSON.stringify(weatherData.list[16].sys.country)
-        const location2 = JSON.stringify(weatherData.city.name)
         const description2 = JSON.stringify(weatherData.list[16].weather[0].description)
         const weather2 = JSON.stringify(weatherData.list[16].main.temp);
         const iconcode3 =  weatherData.list[16].weather[0].icon;
 
+        // day 3 forecast
         const wind3 = JSON.stringify(weatherData.list[24].wind)
-        const country3 = JSON.stringify(weatherData.list[24].sys.country)
-        const location3 = JSON.stringify(weatherData.city.name)
         const description3 = JSON.stringify(weatherData.list[24].weather[0].description)
         const weather3 = JSON.stringify(weatherData.list[24].main.temp);
         const iconcode4 =  weatherData.list[24].weather[0].icon;
