@@ -19,5 +19,6 @@ const cityLoc3 = document.querySelector('#location3');
 const currentTempature3 = document.querySelector('#curr_temp3');
 const weatherDescription3 = document.querySelector('#desc_weather3');
 
+
 export {userState, userCity, submission, cityLoc, currentTempature, weatherDescription, cityLoc1, currentTempature1, weatherDescription1, cityLoc2, currentTempature2,
     weatherDescription2, cityLoc3, currentTempature3, weatherDescription3}
