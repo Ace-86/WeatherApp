@@ -61,6 +61,12 @@ async function getGeoCode() {
         document.getElementById("weather_icon4").src = "../src/images/" + iconcode4 + ".png";
         currentTempature3.innerHTML = "Temperature: " + weather3 + ' F';
         weatherDescription3.innerHTML = "Forecast: " + description3;
+
+        document.querySelector("#id_card").style.visibility = "visible";
+        document.querySelector("#id_card1").style.visibility = "visible";
+        document.querySelector("#id_card2").style.visibility = "visible";
+        document.querySelector("#id_card3").style.visibility = "visible";
+
     } catch (err) {
         console.log('Error retrieving location information')
     } 
