@@ -4,9 +4,11 @@
     grid-template-rows: 1fr 1fr
 }
 
-#id_card {
+#id_card, #id_card1, #id_card2, #id_card3 {
+    visibility: hidden;
     margin: 15px;
     border-radius: 10%;
+    min-height: 300px;
 }
 
 #user_input {
